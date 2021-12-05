@@ -2,7 +2,16 @@ package hu.nye.progtech.torpedo.model;
 
 import java.util.Objects;
 
+import hu.nye.progtech.torpedo.service.input.InputReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Hajók.
+ * */
+
 public class ShipClasses {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ShipClasses.class);
     private final String className;
     private final int shipSize;
 

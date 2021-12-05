@@ -2,17 +2,38 @@ package hu.nye.progtech.torpedo;
 
 import java.util.Scanner;
 
-import hu.nye.progtech.torpedo.model.Player;
+import hu.nye.progtech.torpedo.model.BaseMap;
+import hu.nye.progtech.torpedo.model.MapVO;
+import hu.nye.progtech.torpedo.service.command.Commands;
+import hu.nye.progtech.torpedo.service.input.InputReader;
+import hu.nye.progtech.torpedo.ui.Printer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Main.
+ */
 
 public class Main {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+
+    /**
+     * Main.
+     */
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in, "ISO-8859-2");
-        Player player1 = new Player();
-        Player player2 = new Player();
-        System.out.print("Name of Player1: ");
-        player1.setPlayerName(scanner.nextLine());
-        System.out.print("Name of Player2: ");
-        player2.setPlayerName(scanner.nextLine());
-        System.out.println(player1.getPlayerName() + " vs " + player2.getPlayerName());
+        Scanner scanner = new Scanner(System.in);
+        InputReader inputReader = new InputReader(scanner);
+        Printer printer = new Printer();
+        BaseMap baseMap = new BaseMap();
+        String[][] map = baseMap.map();
+        MapVO mapVO = new MapVO(map);
+        String input;
+        do {
+            System.out.println("Make a command:");
+            Commands commands = new Commands(inputReader, printer, mapVO);
+            input = inputReader.scanInput();
+            mapVO = commands.commandCheck(input);
+        } while (!input.equals("exit"));
     }
 }

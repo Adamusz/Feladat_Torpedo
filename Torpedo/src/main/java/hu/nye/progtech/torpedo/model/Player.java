@@ -1,6 +1,9 @@
 package hu.nye.progtech.torpedo.model;
 
 import java.util.Objects;
+/**
+ * Játékos.
+ * */
 
 public class Player {
     String playerName;

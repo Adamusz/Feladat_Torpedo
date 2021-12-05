@@ -2,16 +2,19 @@ package hu.nye.progtech.torpedo.model;
 
 import java.util.Arrays;
 import java.util.Objects;
+/**
+ * MapVO.
+ * */
 
 public class MapVO {
 
     private final int numberOfColumns;
     private final int numberOfRows;
-    private final int[][] map;
+    private final String[][] map;
 
-    public MapVO(int numberOfColumns, int numberOfRows, int[][] map) {
-        this.numberOfColumns = numberOfColumns;
-        this.numberOfRows = numberOfRows;
+    public MapVO(String[][] map) {
+        this.numberOfColumns = 10;
+        this.numberOfRows = 10;
         this.map = deepCopy(map);
     }
 
@@ -23,15 +26,15 @@ public class MapVO {
         return numberOfRows;
     }
 
-    public int[][] getMap() {
+    public String[][] getMap() {
         return deepCopy(this.map);
     }
 
-    private int[][] deepCopy(int map[][]) {
-        int[][] result = new int[map.length][];
+    private String[][] deepCopy(String[][] map) {
+        String[][] result = new String[map.length][];
 
         for (int i = 0; i < map.length; i++) {
-            result[i] = new int[map[i].length];
+            result[i] = new String[map[i].length];
             for (int j = 0; j < map[i].length; j++) {
                 result[i][j] = map[i][j];
             }
@@ -46,7 +49,7 @@ public class MapVO {
         return "MapVO{" +
                 "NumberOfColumns=" + numberOfColumns +
                 ", NumberOfRows=" + numberOfRows +
-                ", map=" + Arrays.toString(map) +
+                ", map=" + Arrays.deepToString(map) +
                 '}';
     }
 
