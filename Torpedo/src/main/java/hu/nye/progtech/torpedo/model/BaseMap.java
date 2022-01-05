@@ -10,7 +10,7 @@ public class BaseMap {
      * Üres map.
      **/
 
-    public String[][] map()  {
+    public String[][] map() {
         String[][] defaultMap = {
                 {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
                 {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},

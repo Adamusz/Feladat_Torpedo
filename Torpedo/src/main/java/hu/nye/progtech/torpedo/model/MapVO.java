@@ -2,9 +2,10 @@ package hu.nye.progtech.torpedo.model;
 
 import java.util.Arrays;
 import java.util.Objects;
+
 /**
  * MapVO.
- * */
+ */
 
 public class MapVO {
 
